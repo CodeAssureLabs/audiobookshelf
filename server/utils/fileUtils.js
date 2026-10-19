@@ -120,10 +120,10 @@ module.exports.getIno = getIno
  * @param {string} path
  * @returns {string}
  */
-async function readTextFile(path) {
+async function readTextFile(path, encoding) {
   try {
     var data = await fs.readFile(path)
-    return String(data)
+    return data.toString(encoding.toLowerCase())
   } catch (error) {
     Logger.error(`[FileUtils] ReadTextFile error ${error}`)
     return ''
